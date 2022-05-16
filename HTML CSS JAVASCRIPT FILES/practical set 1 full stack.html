@@ -1,0 +1,948 @@
+<!Doctype html>
+
+<head>
+    <title>
+        Practical Set 1
+    </title>
+    <script>
+        //global vaiable for memory
+        var mem_val = 0
+            //code for leap year
+        function leap_chk(year = parseInt(prompt('enter a year'))) {
+            //let year = parseInt(document.getElementById('text1'))
+            if (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)) {
+                alert(year + ' is a leap year');
+            } else {
+                alert(year + ' Not a leap year');
+            }
+
+        }
+
+        //code for temp to far
+        function cal_to_far() {
+            let temp_a = parseFloat(document.getElementById('temp_one').value)
+            let temp_b = parseFloat(document.getElementById('temp_two').value)
+            if (document.getElementById('cal_1').value == 'farhenhiet' && document.getElementById('cal_2').value == 'celsius') {
+                temp_b = (temp_a - 32) * 5 / 9;
+                document.getElementById('output_temp').innerHTML = temp_b;
+                document.getElementById('temp_one').value = '0'
+                document.getElementById('temp_two').value = temp_b
+                temp_b = 0
+            } else if (document.getElementById('cal_2').value == 'farhenhiet' && document.getElementById('cal_1').value == 'celsius') {
+                temp_a = (temp_b * 9 / 5) + 32;
+                document.getElementById('output_temp').innerHTML = temp_a;
+                document.getElementById('temp_two').value = temp_a
+                    //document.getElementById('temp_one').value = 
+                temp_a = 0;
+            } else {
+                document.getElementById('output_temp').innerHTML = temp_a;
+                document.getElementById('temp_two').value = temp_a
+                document.getElementById('temp_one').value = temp_a
+            }
+        }
+
+        function validate_input() {
+            var flag = true
+            var get_fname = document.getElementById('f_name').value
+            var get_lname = document.getElementById('l_name').value
+            var get_email = document.getElementById('email').value
+            var get_mobile = document.getElementById('mobile_no').value
+            var get_gender = document.getElementsByTagName('rb1').checked
+            var get_address = document.getElementById('f_address').value
+            var get_city = document.getElementById('f_city').value
+            var get_pin = document.getElementById('f_pincode').value
+            var get_state = document.getElementById('f_state').value.toString()
+            var get_country = document.getElementById('f_country').value
+                //checkboxees
+            var get_checkbox1 = document.getElementById('chb1')
+            var get_checkbox2 = document.getElementById('chb2')
+            var get_checkbox3 = document.getElementById('chb3')
+            var get_checkbox4 = document.getElementById('chb4')
+            var get_checkbox5 = document.getElementById('chb5')
+            var get_checkbox6 = document.getElementById('chb6')
+            var get_checkbox7 = document.getElementById('chb7')
+            var get_checkbox8 = document.getElementById('chb8')
+            var get_checkbox9 = document.getElementById('chb9')
+            var get_checkbox10 = document.getElementById('chb10')
+                //course
+                //var get_course1 = document.getElementsByTagName('rb2')
+            const get_course1 = document.querySelectorAll('input[name="rb2"]');
+            var get_course2 = document.getElementsByTagName('rb3')
+            let rb_selected = false
+
+
+
+            if (get_fname == '' || get_fname.toString().length > 50) {
+                document.getElementById('f_name_p').style.color = '#ff0303'
+                document.getElementById('f_name_p').innerHTML = 'First Name cannnot be empty or greater than length'
+                flag = false
+            } else {
+                document.getElementById('f_name_p').innerHTML = ''
+                flag ? true : false
+            }
+            if (get_lname == '') {
+                document.getElementById('l_name_p').style.color = '#ff0303'
+                document.getElementById('l_name_p').innerHTML = 'Last Name cannnot be empty'
+                flag = false
+            } else {
+                document.getElementById('l_name_p').innerHTML = ''
+                flag ? true : false
+            }
+
+            if (get_email == '') {
+                document.getElementById('email_p').style.color = '#ff0303'
+                document.getElementById('email_p').innerHTML = 'Email is required'
+                flag = false
+            } else {
+                document.getElementById('email_p').innerHTML = ''
+                flag ? true : false
+            }
+
+            if (get_mobile.toString().length < 10 || get_mobile.toString().length > 10) {
+                document.getElementById('mobile_no_p').style.color = '#ff0303'
+                document.getElementById('mobile_no_p').innerHTML = '10 Digit mobile no is required'
+                flag = false
+            } else {
+                document.getElementById('mobile_no_p').innerHTML = ''
+                flag ? true : false
+            }
+            if (get_gender == false) {
+                document.getElementById('gender_p').style.color = '#ff0303'
+                document.getElementById('gender_p').innerHTML = 'Cannot be empty'
+                flag = false
+            } else {
+                document.getElementById('gender_p').innerHTML = ''
+                    //(flag ? true : false)
+                if (flag == true) {
+                    flag = true
+                } else {
+                    flag = false
+                }
+
+            }
+            if (get_address == '') {
+                document.getElementById('f_address_p').style.color = '#ff0303'
+                document.getElementById('f_address_p').innerHTML = 'Address Cannot be empty'
+                flag = false
+            } else {
+                document.getElementById('f_address_p').innerHTML = ''
+                flag ? true : false
+            }
+            if (get_city == '') {
+                document.getElementById('f_city_p').style.color = '#ff0303'
+                document.getElementById('f_city_p').innerHTML = 'city Cannot be empty'
+                flag = false
+            } else {
+                document.getElementById('f_city_p').innerHTML = ''
+                flag ? true : false
+            }
+            if (get_pin == '' || get_pin.toString().length > 6 || get_pin.toString().length < 6) {
+                document.getElementById('f_pincode_p').style.color = '#ff0303'
+                document.getElementById('f_pincode_p').innerHTML = 'Pin Should be 6 didgit only'
+                flag = false
+            } else {
+                document.getElementById('f_pincode_p').innerHTML = ''
+                flag ? true : false
+            }
+            if (get_state == '') {
+                document.getElementById('f_state_p').style.color = '#ff0303'
+                document.getElementById('f_state_p').innerHTML = 'State cannot be empty'
+                console.log(get_state)
+                flag = false
+            } else {
+                document.getElementById('f_state_p').innerHTML = ''
+                console.log(get_state)
+                flag ? true : false
+            }
+            if (get_country == "") {
+                document.getElementById('f_country_p').style.color = '#ff0303'
+                document.getElementById('f_country_p').innerHTML = 'Country cannot be empty'
+                flag = false
+            } else {
+                document.getElementById('f_country_p').innerHTML = ''
+                    //(flag ? true : false)
+                if (flag == true) {
+                    flag = true
+                } else {
+                    flag = false
+                }
+            }
+            if (get_checkbox1.checked == false && get_checkbox2.checked == false && get_checkbox3.checked == false && get_checkbox4.checked == false && get_checkbox5.checked == false) {
+                document.getElementById('f_checkbox_p').style.color = '#ff0303'
+                document.getElementById('f_checkbox_p').innerHTML = 'Check atleast one hobby'
+                flag = false
+                console.log('first if')
+            } else if (get_checkbox5.checked == true) {
+                get_checkbox1.checked = false
+                get_checkbox2.checked = false
+                get_checkbox3.checked = false
+                get_checkbox4.checked = false
+                var chb4_data = document.getElementById('chb4_data').value
+                if (chb4_data == '') {
+                    document.getElementById('f_checkbox_p').innerHTML = 'Enter the hobby'
+                    flag = false
+
+                } else {
+                    flag ? true : false
+                }
+                console.log('second if')
+
+
+            } else {
+                document.getElementById('f_checkbox_p').innerHTML = ''
+                console.log('third if')
+                console.log(get_checkbox1.checked)
+                flag ? true : false
+            }
+            if (get_checkbox6.checked == false && get_checkbox7.checked == false && get_checkbox8.checked == false && get_checkbox9.checked == false && get_checkbox10.checked == false) {
+                document.getElementById('f_checkbox_p2').style.color = '#ff0303'
+                document.getElementById('f_checkbox_p2').innerHTML = 'Check atleast one qualification'
+                console.log('qual', get_checkbox6.checked)
+                flag = false
+            } else {
+                document.getElementById('f_checkbox_p2').innerHTML = ''
+                flag ? true : false
+            }
+            if (rb_selected = false) {
+                flag = false
+                for (let rb of get_course1) {
+                    if (rb.checked) {
+                        rb_selected = true
+                        break
+                    }
+                }
+                for (let rb of get_course2) {
+                    if (rb.checked) {
+                        rb_selected = true
+                        break
+                    }
+                }
+                document.getElementById('course_p').style.color = '#ff0303'
+                document.getElementById('course_p').innerHTML = 'Check atleast one course'
+            } else {
+                document.getElementById('course_p').innerHTML = ''
+                flag ? true : false
+            }
+
+
+            if (flag == true) {
+                document.getElementById('doc_sub').style.color = '#00cf10'
+                document.getElementById('doc_sub').innerHTML = 'Thank You for submitting the document'
+            } else if (flag == false) {
+                document.getElementById('doc_sub').style.color = '#ff0303'
+                document.getElementById('doc_sub').innerHTML = 'Cannot submit document Check Something wrong <span> please check the document again</span>'
+            }
+
+
+        }
+
+        //calculator functions 
+        function evaluate1() {
+            let input = document.getElementById('cal_input').value
+            console.log(eval(input))
+            document.getElementById('cal_input').value = eval(input)
+            mem_store()
+        }
+
+        function power() {
+            let input = document.getElementById('cal_input').value
+            input = eval(input)
+            document.getElementById('cal_input').value = ''
+            let pow = parseInt(prompt('enter the value of power'))
+            if (pow != null) {
+                input = Math.pow(input, pow);
+                console.log('power', input)
+                document.getElementById('cal_input').value = input
+                mem_store()
+            } else {
+                alert('Error')
+            }
+
+
+        }
+
+        function sq_root() {
+            let input = document.getElementById('cal_input').value
+            input = eval(input)
+            input = Math.sqrt(input);
+            document.getElementById('cal_input').value = input
+            mem_store()
+        }
+
+        function clear_entry() {
+            document.getElementById('cal_input').value = ''
+        }
+
+        function square() {
+            let input = document.getElementById('cal_input').value
+            input = eval(input)
+            input = Math.pow(input, 2)
+            document.getElementById('cal_input').value = input
+            mem_store()
+        }
+
+        function percentage() {
+            let input = document.getElementById('cal_input').value
+            input = eval(input)
+            document.getElementById('cal_input').value = ''
+            let per = parseInt(prompt('enter the value of percentage'))
+            if (per != null) {
+                input = input / 100 * per;
+                console.log('percentage', input)
+                document.getElementById('cal_input').value = input
+                mem_store()
+            } else {
+                alert('Error')
+            }
+        }
+
+        function round_to2() {
+            let input = document.getElementById('cal_input').value
+            input = eval(input)
+            console.log('round to 2:', input.toFixed(2))
+            document.getElementById('cal_input').value = input.toFixed(2)
+            mem_store()
+        }
+
+        function round_to0() {
+            let input = document.getElementById('cal_input').value
+            input = eval(input)
+            console.log('round to 2:', Math.round(input))
+            document.getElementById('cal_input').value = Math.round(input)
+            mem_store()
+        }
+
+        function mem_store() {
+            mem_val = document.getElementById('cal_input').value
+            console.log('mem_val:', mem_val)
+        }
+
+        function mem_clear() {
+            mem_val = 0
+            console.log('mem_val:', mem_val)
+        }
+
+        function mem_recall() {
+            document.getElementById('cal_input').value = mem_val
+        }
+
+        function mem_plus() {
+            let val = document.getElementById('cal_input').value
+            if (val == undefined || val == null) {
+                val = 0
+            }
+            val = eval(val)
+            document.getElementById('cal_input').value = val + mem_val
+        }
+
+        function mem_minus() {
+            let val = document.getElementById('cal_input').value
+            if (val == undefined || val == null || val == NaN || val == '') {
+                val = 0
+                console.log('Nan condition')
+            }
+            val = eval(val)
+            document.getElementById('cal_input').value = val - mem_val
+        }
+        //q4 javascript
+        function calc_stud_details() {
+            let studno = parseInt(document.getElementById('stud_no').value)
+            let studname = document.getElementById('stud_name').value
+            let studmarks1 = parseInt(document.getElementById('stud_marks1').value)
+            let studmarks2 = parseInt(document.getElementById('stud_marks2').value)
+            let studmarks3 = parseInt(document.getElementById('stud_marks3').value)
+
+            let arr = {
+                s_no: studno,
+                s_name: studname,
+                m_1: studmarks1,
+                m_2: studmarks2,
+                m_3: studmarks3
+            }
+            let total_marks = arr.m_1 + arr.m_2 + arr.m_3
+
+            let avg_marks = Math.round((arr.m_1 + arr.m_2 + arr.m_3) / 3)
+
+            console.log(total_marks, avg_marks)
+
+            document.getElementById('stud_result').innerHTML = 'Total Marks:' + total_marks + ' Average Marks:' + avg_marks
+
+        }
+    </script>
+    <style>
+        .seperate {
+            width: 200px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        
+        .seperate:hover {
+            background-color: #45a049;
+        }
+        
+        .button_calc {
+            /*background-color: #4CAF50;
+            /* Green */
+            border: none;
+            background-color: #e7e7e7;
+            color: black;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 4px;
+            height: 50px;
+            width: 50px;
+        }
+        
+        input[type=text] {
+            border: 1px solid rgb(112, 110, 110);
+            border-radius: 4px;
+            padding: 12px 20px;
+            margin: 8px 0;
+            width: auto;
+        }
+        
+        input[type=number] {
+            border: 1px solid rgb(112, 110, 110);
+            border-radius: 4px;
+            padding: 12px 20px;
+            margin: 8px 0;
+            width: auto;
+        }
+        
+        textarea {
+            width: 600px;
+            border: 1px solid rgb(112, 110, 110);
+            border-radius: 4px;
+            padding: 12px 20px;
+            margin: 8px 0;
+            width: auto;
+        }
+        
+        input[type=email] {
+            border: 1px solid rgb(112, 110, 110);
+            border-radius: 4px;
+            padding: 12px 20px;
+            margin: 8px 0;
+            width: auto;
+        }
+        
+        fieldset {
+            background-color: #d3d1d1;
+        }
+        
+        input[type=reset] {
+            width: 200px;
+            background-color: #f46060;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        
+        input[type=reset]:hover {
+            background-color: #bc4f4f;
+        }
+        
+        form {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+        
+        select {
+            width: 200px;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        label {
+            color: rgb(0, 0, 0);
+            padding: 8px;
+            font-family: Arial;
+            font-size: 19px;
+        }
+        
+        p {
+            color: rgb(45, 45, 45);
+            padding: 8px;
+            font-family: Calibri;
+            font-size: 19px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Leap Year checker</h2>
+    <label style="size: 30px;">Enter the year to check leap year</label><br>
+    <input type="button" value="Check" name="Button" onclick="leap_chk()" class="seperate">
+    <hr size="1">
+    <form action="">
+        <h2>Converter</h2>
+        <label> Convert farhenheit to celcius</label><br>
+        <input type="text" id="temp_one">
+        <select id="cal_1">
+            <option value="farhenhiet">farhenheit</option>
+            <option value="celsius">celsius</option>
+        </select>
+        <input type="text" id="temp_two">
+        <select id="cal_2">
+            <option value="farhenhiet">farhenheit</option>
+            <option value="celsius">celsius</option>
+        </select><br>
+        <input type="button" id="cov_temp" onclick="cal_to_far()" value="Calculate" class="seperate">
+        <p id="output_temp">Output Here</p>
+    </form>
+    <hr size="1">
+    <!-- #region ----------------------------------------------------------------------------------------------------------------------->
+    <form name="f1">
+        <h2>Form</h2>
+        <table>
+            <tr>
+                <td style="padding-right: 20px;">
+                    <label>first name</label>
+                </td>
+                <td>
+                    <input type="text" id="f_name" maxlength="50">
+                </td>
+                <td>
+                    <p id="f_name_p">(Max 50 Characters allowed)</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>last name</label>
+                </td>
+                <td>
+                    <input type="text" id="l_name" maxlength="50">
+                </td>
+                <td>
+                    <p id="l_name_p">(Max 50 Characters allowed)</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>email</label>
+                </td>
+                <td>
+                    <input type="email" id="email">
+                </td>
+                <td>
+                    <p id="email_p"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Mobile no</label>
+                </td>
+                <td>
+                    <input type="number" maxlength="10" minlength="10" id="mobile_no">
+                </td>
+                <td>
+                    <p id="mobile_no_p">(10 Digits allowed)</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Gender</label>
+                </td>
+                <td>
+                    <label>Male </label>
+                    <input type="radio" name="rb1" id="male" value="male">
+                    <label>female </label>
+                    <input type="radio" name="rb1" id="female" value="female">
+                    <label>Attack helecopter </label>
+                    <input type="radio" name="rb1" id="Attack helecopter" value="Attack helecopter">
+                </td>
+                <td>
+                    <p id="gender_p"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>D.O.B.</label>
+                </td>
+                <td>
+
+                    <select id="day" placeholder="Day:">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                </select>
+                    <select>
+                    <option id="month_1" value="Jan">Jan</option>
+                    <option id="month_2" value="feb">feb</option>
+                    <option id="month_3" value="Mar">Mar</option>
+                    <option id="month_4" value="april">april</option>
+                    <option id="month_5" value="May">May</option>
+                    <option id="month_6" value="June">June</option>
+                    <option id="month_7" value="July">July</option>
+                    <option id="month_8" value="Aug">Aug</option>
+                    <option id="month_9" value="sep">sep</option>
+                    <option id="month_10" value="Oct">Oct</option>
+                    <option id="month_11" value="Nov">Nov</option>
+                    <option id="month_12" value="dec">dec</option>
+                </select>
+                    <select>
+                    <option id="year_1" value="2000">2000</option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Address:</label>
+                </td>
+                <td>
+                    <textarea name="" id="f_address" cols="30" rows="10" spellcheck="truezz "></textarea>
+                </td>
+                <td>
+                    <p id="f_address_p">
+
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>City</label>
+                </td>
+                <td>
+                    <input type="text" maxlength="50" id="f_city">
+                </td>
+                <td>
+                    <p id="f_city_p">(Max 50 Characters allowed)</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Pincode</label>
+                </td>
+                <td>
+                    <input type="number" maxlength="6" minlength="6" id="f_pincode">
+                </td>
+                <td>
+                    <p id="f_pincode_p">(Max 6 Characters allowed)</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>State</label>
+                </td>
+                <td>
+                    <input type="text" maxlength="50" id="f_state">
+                </td>
+                <td>
+                    <p id="f_state_p">(Max 50 Characters allowed)</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Country</label>
+                </td>
+                <td>
+                    <input type="text" maxlength="50" id="f_country">
+                </td>
+                <td>
+                    <p id="f_country_p"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Hobbies</label>
+                </td>
+                <td>
+                    <label for="">drawing</label>
+                    <input type="checkbox" id="chb1">
+                    <label for="">Singing</label>
+                    <input type="checkbox" id="chb2">
+                    <label for="">Dancing</label>
+                    <input type="checkbox" id="chb3">
+                    <label for="">Sketching</label>
+                    <input type="checkbox" id="chb4"><br>
+                    <label for="">Others</label>
+                    <input type="checkbox" id="chb5">
+                    <input type="text" maxlength="50" id="chb4_data">
+                </td>
+                <td>
+                    <p id="f_checkbox_p">(Max 50 Characters allowed)</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Qualification</label>
+                </td>
+                <td>
+                    <input type="checkbox" id="chb6">
+                    <label for="">High School (10th)</label><br>
+                    <input type="checkbox" id="chb7">
+                    <label for="">Higher School (12th)</label><br>
+                    <input type="checkbox" id="chb8">
+                    <label for="">Graduation (Bachelors)</label><br>
+                    <input type="checkbox" id="chb9">
+                    <label for="">Post graduation (Masters)</label><br>
+                    <input type="checkbox" id="chb10">
+                    <label for="">PHD</label>
+                </td>
+                <td>
+                    <p id="f_checkbox_p2"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="">Courses applied for</label>
+                </td>
+                <td>
+                    <input type="radio" name="rb2" id="BCA" value="BCA">
+                    <label>BCA </label><br>
+                    <input type="radio" name="rb2" id="B.Com" value="B.Com">
+                    <label>B.Com </label><br>
+                    <input type="radio" name="rb2" id="BSC" value="BSC">
+                    <label>BSC</label><br>
+                    <input type="radio" name="rb2" id="BA" value="BA">
+                    <label>BA </label><br>
+                    <input type="radio" name="rb3" id="MCA" value="MCA">
+                    <label>MCA </label><br>
+                    <input type="radio" name="rb3" id="M.com" value="M.com">
+                    <label>M.Com </label><br>
+                    <input type="radio" name="rb3" id="MSC" value="MSC">
+                    <label>MSC </label><br>
+                    <input type="radio" name="rb3" id="MA" value="MA">
+                    <label>MA </label>
+                </td>
+                <td>
+                    <p id="course_p"></p>
+                </td>
+            </tr>
+        </table>
+        <p id="doc_sub" style="font-size: 30px;"></p><br>
+        <input type="button" onclick="validate_input()" value="Submit" class="seperate">
+        <input type="reset">
+    </form>
+    <hr size="1">
+
+    <div>
+        <form action="">
+            <label for="">
+                Calculate Student details
+            </label>
+            <table>
+                <tr>
+                    <td>
+                        <label>Student No</label>
+                    </td>
+                    <td>
+                        <input type="text" maxlength="50" id="stud_no">
+                    </td>
+                    <td>
+                        <p id="stud_no_p"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Student Name</label>
+                    </td>
+                    <td>
+                        <input type="text" maxlength="50" id="stud_name">
+                    </td>
+                    <td>
+                        <p id="stud_name_p"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Marks 1</label>
+                    </td>
+                    <td>
+                        <input type="number" maxlength="50" id="stud_marks1">
+                    </td>
+                    <td>
+                        <p id="stud_marks1_p"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Marks 2</label>
+                    </td>
+                    <td>
+                        <input type="number" maxlength="50" id="stud_marks2">
+                    </td>
+                    <td>
+                        <p id="stud_marks2_p"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Marks 3</label>
+                    </td>
+                    <td>
+                        <input type="number" maxlength="50" id="stud_marks3">
+                    </td>
+                    <td>
+                        <p id="stud_marks3_p"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p id="stud_result"></p>
+                    </td>
+                </tr>
+            </table>
+            <input type="button" value="Submit" class="seperate" onclick="calc_stud_details()">
+            <input type="reset">
+        </form>
+    </div>
+    <hr size="1">
+    <form name="calculator1">
+
+        <h2>Calculator</h2>
+        <fieldset style="width:300px ;">
+            <table>
+                <tr>
+                    <td colspan="4">
+                        <input type="text" id="cal_input" style="font-size:20px ;">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" value="mc" onclick="mem_clear()" class="button_calc" style="background-color: rgb(191, 191, 191); border:1px solid rgb(179, 178, 178)">
+                    </td>
+                    <td>
+                        <input type="button" value="mr" onclick="mem_recall()" class="button_calc" style="background-color: rgb(191, 191, 191); border:1px solid rgb(179, 178, 178)">
+                    </td>
+                    <td>
+                        <input type="button" value="m-" onclick="mem_minus()" class="button_calc" style="background-color: rgb(191, 191, 191); border:1px solid rgb(179, 178, 178)">
+                    </td>
+                    <td>
+                        <input type="button" value="m+" onclick="mem_plus()" class="button_calc" style="background-color: rgb(191, 191, 191); border:1px solid rgb(179, 178, 178)">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" value="CE" onclick="clear_entry()" class="button_calc" style="background-color: rgb(191, 191, 191); border:1px solid rgb(179, 178, 178)">
+                    </td>
+                    <td>
+                        <input type="button" value="√x" onclick="sq_root()" class="button_calc" style="background-color: rgb(191, 191, 191); border:1px solid rgb(179, 178, 178)">
+                    </td>
+                    <td>
+                        <input type="button" value="%" onclick="percentage()" class="button_calc" style="background-color: rgb(191, 191, 191); border:1px solid rgb(179, 178, 178)">
+                    </td>
+                    <td>
+                        <input type="button" value="/" id="cal_divide" onclick="calculator1.cal_input.value += '/'" class="button_calc" style="background-color: rgb(239, 211, 0); border:1px solid rgb(179, 178, 178)">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" value="7" id="no_7" onclick="calculator1.cal_input.value += '7'" class="button_calc">
+                    </td>
+                    <td>
+                        <input type="button" value="8" id="no_8" onclick="calculator1.cal_input.value += '8'" class="button_calc">
+                    </td>
+                    <td>
+                        <input type="button" value="9" id="no_9" onclick="calculator1.cal_input.value += '9'" class="button_calc">
+                    </td>
+                    <td>
+                        <input type="button" value="X" id="cal_multiply" onclick="calculator1.cal_input.value += '*'" class="button_calc" style="background-color: rgb(239, 211, 0); border:1px solid rgb(179, 178, 178)">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" value="4" id="no_4" onclick="calculator1.cal_input.value += '4'" class="button_calc">
+                    </td>
+                    <td>
+                        <input type="button" value="5" id="no_3" onclick="calculator1.cal_input.value += '5'" class="button_calc">
+                    </td>
+                    <td>
+                        <input type="button" value="6" id="no_2" onclick="calculator1.cal_input.value += '6'" class="button_calc">
+                    </td>
+                    <td>
+                        <input type="button" value="-" id="cal_minus" onclick=" calculator1.cal_input.value += '-'" class="button_calc" style="background-color: rgb(239, 211, 0); border:1px solid rgb(179, 178, 178)">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" value="1" id="no_1" onclick="calculator1.cal_input.value += '1'" class="button_calc">
+                    </td>
+                    <td>
+                        <input type="button" value="2" id="no_2" onclick="calculator1.cal_input.value += '2'" class="button_calc">
+                    </td>
+                    <td>
+                        <input type="button" value="3" id="no_3" onclick="calculator1.cal_input.value += '3'" class="button_calc">
+                    </td>
+                    <td>
+                        <input type="button" value="+" id="cal_plus" onclick="calculator1.cal_input.value += '+'" class="button_calc" style="background-color: rgb(239, 211, 0); border:1px solid rgb(179, 178, 178)">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" value="0" id="no_0" onclick="calculator1.cal_input.value += '0'" class="button_calc">
+                    </td>
+                    <td>
+                        <input type="button" value="." id="cal_decimal" onclick="calculator1.cal_input.value += '.'" class="button_calc">
+                    </td>
+                    <td>
+                        <input type="button" value="±" class="button_calc">
+                    </td>
+                    <td>
+                        <input type="button" value="=" id="calculate" onclick="evaluate1()" class="button_calc" style="background-color: rgb(239, 211, 0); border:1px solid rgb(179, 178, 178)" </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" value="π" onclick="calculator1.cal_input.value += '3.14'" class="button_calc" style="background-color: rgb(191, 191, 191); border:1px solid rgb(179, 178, 178)">
+                    </td>
+                    <td>
+                        <input type="button" value="x²" onclick="square()" class="button_calc" style="background-color: rgb(191, 191, 191); border:1px solid rgb(179, 178, 178)">
+                    </td>
+                    <td>
+                        <input type="button" value="R2" onclick="round_to2()" class="button_calc" style="background-color: rgb(191, 191, 191); border:1px solid rgb(179, 178, 178)">
+                    </td>
+                    <td>
+                        <input type="button" value="R0" onclick="round_to0()" class="button_calc" style="background-color: rgb(191, 191, 191); border:1px solid rgb(179, 178, 178)">
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    </form>
+</body>
+
+</html>
