@@ -43,7 +43,7 @@ function freq2() {
         console.log("Number", i, ":", freq(value, i))
     }
 }
-freq2();
+//freq2();
 module.exports - freq2
 
 //var s = "A string to count in a haste enviourment."
@@ -57,6 +57,7 @@ function stro(s) {
     for (let i = 0; i < s.length; i++) {
         if (s[i] != " " && ns.includes(s[i]) == false) {
             ns[i] = s[i].toLowerCase()
+            console.log(ns[i])
         }
     }
     for (j = 0; j < ns.length; j++) {
@@ -71,31 +72,54 @@ function stro(s) {
                 }
             }
         }
-        if (ns[j] === undefined) {
+        // if (ns[j] === undefined) {
 
-        } else {
-            console.log(ns[j] + ": " + st)
-        }
+        // } else {
+        //     console.log(ns[j] + ": " + st)
+        // }
+        console.log(ns[j] + ": " + st)
         st = 0
     }
 }
-stro("A string of strings")
+//stro("A string of strings")
 
 function rs1(str) {
     str = str.split(' ').reverse().join(' ')
     console.log(str)
 }
-rs1('Reverse words of this string')
+//rs1('Reverse words of this string')
 
 function rs2(str) {
     str = str.split('').reverse().join('').split(' ').reverse().join(' ')
     console.log(str)
 }
-rs2('Reverse words')
+//rs2('Reverse words')
 
 function rs3(str) {
     str = str.split('').reverse().join('')
     console.log(str)
 }
 
-rs3('Reverse words')
+//rs3('Reverse words')
+
+
+function char(str) {
+    let st = new Array(58);
+    let fr = [];
+    for (let i = 0; i < st.length; i++) {
+        st[i] = 0;
+
+    }
+
+    for (let i = 0; i < str.length; i++) {
+        st[str.charCodeAt(i) - 65]++
+    }
+
+    for (let i = 0; i < st.length; i++) {
+        if (st[i] != 0 && !(i > 25 && i < 33)) {
+            console.log(String.fromCharCode(i + 65) + ": " + st[i])
+        }
+    }
+
+}
+char("A simpleAAA CodE adkadjk adjakdad akda dkaduy a ikudad a dA yhk , A h , [][][]_______")
