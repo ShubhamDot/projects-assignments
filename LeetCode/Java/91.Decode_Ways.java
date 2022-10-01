@@ -1,3 +1,5 @@
+//dynamic programming question
+
 class Solution {
     public int numDecodings(String s) {
 
@@ -27,7 +29,7 @@ class Solution {
         }        
         else{
             if(Integer.parseInt(s.substring(i-1 ,i+1))<= 26 )
-                dp [i] =dp [i-1] +( i>=2 ? dp[i-2] : 1 );
+                dp [i] =dp [i-1] +( i>=2 ? dp[i-2] : 1 ); // edge case
             
             else
                 dp[i]=dp[i-1];               
