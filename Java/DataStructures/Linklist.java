@@ -1,6 +1,4 @@
-// A simple Java program for traversal of a linked list
-  
-class LinkedList {
+  class LinkedList {
   
     Node head; // head of list
   
