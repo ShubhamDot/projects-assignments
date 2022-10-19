@@ -77,8 +77,40 @@ class LinkedList
     head = head.next;
   }  
   
-  public void delete_at_pos(Node node)
-  {
+   //delete at a spefic given key
+  public void delete_at_pos(int key)
+    {
+        Node temp = head, prev = null;
+ 
+        
+        if (temp != null && temp.data == key) {
+            head = temp.next; // Changed head
+            return;
+        }
+ 
+        
+        while (temp != null && temp.data != key) {
+            prev = temp;
+            temp = temp.next;
+        }
+ 
+        
+        if (temp == null)
+            return;
+ 
+        
+        prev.next = temp.next;
+    }
     
-  }
+    //deleting node at the end of the linklist
+    public void delete_at_end()
+    {
+        Node end = head;
+        while(end.next != NULL)
+        {
+            end = end.next;
+        }
+        
+        end.next = NULL;
+    }
 }
