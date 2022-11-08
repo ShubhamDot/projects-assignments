@@ -1,0 +1,21 @@
+class Solution {
+    public String makeGood(String s) {
+        if(s == "" || s == null || s.length() < 2)
+            return s;
+
+        int len = s.length();
+        StringBuilder sb = new StringBuilder(s);
+        int i = 0;
+        while(i < len-1){
+            if(Math.abs(sb.charAt(i) - sb.charAt(i + 1)) == 32){
+                sb.delete(i,i + 2);
+                len = sb.length();
+                i = 0; 
+            }
+            else{
+                i++;
+            }
+        }
+        return sb.toString();
+    }
+}
