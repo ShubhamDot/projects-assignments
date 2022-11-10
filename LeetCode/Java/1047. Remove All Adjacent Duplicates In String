@@ -1,0 +1,13 @@
+class Solution 
+{
+    public String removeDuplicates(String s) 
+    {
+        Stack<Character> ss = new Stack();
+        for (char c : s.toCharArray()) 
+            if (!ss.isEmpty() && ss.peek() == c) ss.pop(); 
+            else                      ss.push(c); 
+        return ss.stream()
+               .map(e->e.toString()) 
+               .collect(Collectors.joining()); 
+    }
+}
